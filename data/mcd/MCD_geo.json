@@ -1,0 +1,45 @@
+{
+  "width": 625,
+  "height": 364,
+  "cx": [
+    [ "POSSEDE", 226 ],
+    [ "USER", 379 ],
+    [ "PAYER_UTILISATEUR", 540 ],
+    [ "METEO", 37 ],
+    [ "LIE_A", 124 ],
+    [ "COURT", 226 ],
+    [ "RESERVE", 379 ],
+    [ "PAIEMENT", 540 ],
+    [ "SE_DEROULE_SUR", 226 ],
+    [ "RESERVATION", 379 ],
+    [ "PAYER", 540 ]
+  ],
+  "cy": [
+    [ "POSSEDE", 68 ],
+    [ "USER", 68 ],
+    [ "PAYER_UTILISATEUR", 68 ],
+    [ "METEO", 186 ],
+    [ "LIE_A", 186 ],
+    [ "COURT", 186 ],
+    [ "RESERVE", 186 ],
+    [ "PAIEMENT", 186 ],
+    [ "SE_DEROULE_SUR", 304 ],
+    [ "RESERVATION", 304 ],
+    [ "PAYER", 304 ]
+  ],
+  "shift": [
+    [ "POSSEDE,USER,0", 0 ],
+    [ "POSSEDE,COURT,0", 0 ],
+    [ "PAYER_UTILISATEUR,USER,0", 0 ],
+    [ "PAYER_UTILISATEUR,PAIEMENT,0", 0 ],
+    [ "LIE_A,COURT,0", 0 ],
+    [ "LIE_A,METEO,0", 0 ],
+    [ "RESERVE,USER,0", 0 ],
+    [ "RESERVE,RESERVATION,0", 0 ],
+    [ "SE_DEROULE_SUR,RESERVATION,0", 0 ],
+    [ "SE_DEROULE_SUR,COURT,0", 0 ],
+    [ "PAYER,RESERVATION,0", 0 ],
+    [ "PAYER,PAIEMENT,0", 0 ]
+  ],
+  "ratio": []
+}
