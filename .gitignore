@@ -1,0 +1,11 @@
+node_modules/
+.env
+
+# C'est un fichier caché spécifique à macOS.
+# Il est automatiquement créé par le Finder pour stocker des métadonnées sur les dossiers (ordre des fichiers, icônes, etc.).
+# Problème : Il peut polluer ton dépôt Git et être inutile sur d'autres systèmes.
+.DS_Store
+
+# Ce dossier est généré lorsque tu exécutes des tests avec une couverture de code.
+# Par exemple, si tu utilises Jest pour tester ton API, tu peux lancer 
+coverage/
