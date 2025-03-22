@@ -1,0 +1,30 @@
+type Court {
+  id: ID!
+  name: String!
+  indoor: Boolean!
+  numCourts: Int!
+  lights: Boolean!
+  basePrice: Float!
+  weatherPrice: Float!
+  weather: Weather!
+  club: Club!
+  user: User!
+  createdAt: String!
+  updatedAt: String
+}
+
+# CREATE TABLE court (
+#     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+#     name VARCHAR(255) NOT NULL,
+#     indoor BOOLEAN NOT NULL,
+#     num_courts INTEGER NOT NULL,
+#     lights BOOLEAN NOT NULL,
+#     base_price DECIMAL(10,2) NOT NULL,
+#     weather_price DECIMAL(10,2) NOT NULL,
+#     weather_id BIGINT NOT NULL REFERENCES weather(id) ON DELETE CASCADE,
+#     club_id BIGINT NOT NULL REFERENCES club(id) ON DELETE CASCADE,
+#     user_id BIGINT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,
+#     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+#     updated_at TIMESTAMP
+# );
+

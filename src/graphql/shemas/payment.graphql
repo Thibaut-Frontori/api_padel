@@ -1,0 +1,20 @@
+type Paiement {
+    id: ID!
+    amount: Float!
+    method: String!
+    status: String!
+    reservation: Reservation!
+    user: User!
+    createdAt: String!
+    updatedAt: String
+}
+
+
+    # id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    # amount DECIMAL(10,2) NOT NULL,
+    # method VARCHAR(50) CHECK (method IN ('CB', 'PayPal', 'crypto')) NOT NULL,
+    # status VARCHAR(50) CHECK (status IN ('validated', 'pending', 'failed')) NOT NULL,
+    # reservation_id BIGINT UNIQUE NOT NULL REFERENCES reservation(id) ON DELETE CASCADE,
+    # user_id BIGINT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,
+    # created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    # updated_at TIMESTAMP

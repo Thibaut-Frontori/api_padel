@@ -1,0 +1,1 @@
+import BaseMapper from '../../database/mappers/baseMapper';

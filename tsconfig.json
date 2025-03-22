@@ -7,8 +7,13 @@
       "strict": true,
       "esModuleInterop": true,
       "skipLibCheck": true,
-      "forceConsistentCasingInFileNames": true
+      "forceConsistentCasingInFileNames": true,
+      "baseUrl": "./src",
+      "paths": {
+        "@mappers/*": ["database/mappers/*"],
+        "@models/*": ["database/models/*"]
     },
     "include": ["src/**/*.ts"],
-    "exclude": ["dist", "node_modules"]
+    "exclude": ["dist", "node_modules"]  
   }
+}

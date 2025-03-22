@@ -1,0 +1,20 @@
+type Reservation {
+    id: ID!
+    dateTime: String!
+    status: String!
+    user: User!
+    court: Court!
+    createdAt: String!
+    updatedAt: String
+}
+
+
+# CREATE TABLE reservation (
+#     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+#     date_time TIMESTAMP NOT NULL,
+#     status VARCHAR(50) CHECK (status IN ('confirmed', 'cancelled', 'completed')) NOT NULL,
+#     user_id BIGINT NOT NULL REFERENCES "user"(id) ON DELETE CASCADE,
+#     court_id BIGINT NOT NULL REFERENCES court(id) ON DELETE CASCADE,
+#     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+#     updated_at TIMESTAMP
+# );

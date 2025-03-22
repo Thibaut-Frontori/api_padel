@@ -1,37 +1,44 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
+import express from "express";
+import cors from "cors";
+import { ApolloServer } from "@apollo/server";
+import { expressMiddleware } from "@apollo/server/express4";
+import { gql } from "graphql-tag";
+// Définition des types GraphQL
+const typeDefs = gql `
+  type Query {
+    hello: String
+  }
+`;
+// Définition des résolveurs
+const resolvers = {
+    Query: {
+        hello: () => "Hello, world!",
+    },
 };
-Object.defineProperty(exports, "__esModule", { value: true });
-const server_1 = require("@apollo/server");
-const express4_1 = require("@apollo/server/express4");
-const express_1 = __importDefault(require("express"));
-const http_1 = __importDefault(require("http"));
-const cors_1 = __importDefault(require("cors"));
-require("dotenv/config");
-// Création d'Express
-const app = (0, express_1.default)();
-app.use((0, cors_1.default)());
-app.use(express_1.default.json());
 // Création du serveur Apollo
-const server = new server_1.ApolloServer({
-    typeDefs: `#graphql
-    type Query {
-      hello: String
-    }
-  `,
-    resolvers: {
-        Query: {
-            hello: () => "🚀 Apollo Server fonctionne !"
-        }
-    }
+const server = new ApolloServer({
+    typeDefs,
+    resolvers,
 });
-// Démarrer Apollo et l'intégrer à Express
-await server.start();
-app.use("/graphql", (0, express4_1.expressMiddleware)(server));
-// Création du serveur HTTP
-const httpServer = http_1.default.createServer(app);
-const PORT = process.env.PORT || 4000;
-httpServer.listen(PORT, () => {
-    console.log(`🚀 Apollo Server prêt sur http://localhost:${PORT}/graphql`);
-});
+// Fonction pour démarrer le serveur
+async function startServer() {
+    const app = express();
+    // Middleware pour gérer CORS et JSON
+    app.use(cors());
+    app.use(express.json());
+    // Démarrer Apollo avant de l'attacher à Express
+    await server.start();
+    // Intégration d'Apollo en tant que middleware
+    app.use('/', cors(), express.json(), 
+    // expressMiddleware accepts the same arguments:
+    // an Apollo Server instance and optional configuration options
+    expressMiddleware(server, {
+        context: async ({ req }) => ({ token: req.headers.token }),
+    }));
+    // Démarrer le serveur Express
+    app.listen(4000, () => {
+        console.log("🚀 Server ready at http://localhost:4000/graphql");
+    });
+}
+// Lancer le serveur
+startServer();

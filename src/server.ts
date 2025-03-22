@@ -1,34 +1,53 @@
-// npm install @apollo/server graphql
+import express from "express";
+import cors from "cors";
 import { ApolloServer } from "@apollo/server";
-import { startStandaloneServer } from "@apollo/server/standalone";
-import { gql } from "graphql-tag";
+import { expressMiddleware } from "@apollo/server/express4";
+import {typeDefs} from './graphql/shemas/typeDef.js'; 
 
-// Définition des types GraphQL
-const typeDefs = gql`
-  type Query {
-    hello: String
-  }
-`;
+const port = process.env.PORT || 4001;
 
-// Résolveurs associés aux types
+
+// Définition des résolveurs
 const resolvers = {
   Query: {
     hello: () => "Hello, world!",
   },
 };
 
-// Création du serveur Apollo avec TypeScript
+// Création du serveur Apollo
 const server = new ApolloServer({
   typeDefs,
   resolvers,
 });
 
-// Lancement du serveur Apollo en mode standalone
-const { url } = await startStandaloneServer(server, {
-  context: async ({ req }) => ({
-    token: req.headers.authorization || null, // Récupère le token d'authentification
-  }),
-  listen: { port: 4000 },
-});
+// Fonction pour démarrer le serveur
+async function startServer() {
+  const app = express();
 
-console.log(`🚀 Server ready at ${url}`);
+  // Middleware pour gérer CORS et JSON
+  app.use(cors());
+  app.use(express.json());
+
+  // Démarrer Apollo avant de l'attacher à Express
+  await server.start();
+
+  // Intégration d'Apollo en tant que middleware
+  app.use(
+    '/',
+    cors<cors.CorsRequest>(),
+    express.json(),
+    // expressMiddleware accepts the same arguments:
+    // an Apollo Server instance and optional configuration options
+    expressMiddleware(server , {
+      context: async ({ req }) => ({ token: req.headers.token }),
+    }),
+  );
+
+  // Démarrer le serveur Express
+  app.listen(port, () => {
+    console.log(`🚀 Server ready at http://localhost:${port}/graphql`);
+  });
+}
+
+// Lancer le serveur
+startServer();

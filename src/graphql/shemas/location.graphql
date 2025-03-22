@@ -1,0 +1,22 @@
+type Location {
+    id: ID!
+    name: String!
+    address: String!
+    city: String!
+    postal_code: String!
+    latitude: Float!
+    longitude: Float!
+    created_at: String!
+    updated_at: String
+}
+
+
+# CREATE TABLE location (
+#     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+#     name VARCHAR(255) NOT NULL,
+#     address VARCHAR(255) NOT NULL,
+#     city VARCHAR(255) NOT NULL,
+#     postal_code VARCHAR(255) CHECK (postal_code ~ '^[0-9]{4}0$') NOT NULL,
+#     latitude FLOAT NOT NULL,
+#     longitude FLOAT NOT NULL
+# );

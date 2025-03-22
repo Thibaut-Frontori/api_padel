@@ -1,0 +1,31 @@
+PAYER, 01 RESERVATION, 01 PAIEMENT  
+RESERVATION: id, date_heure, statut  
+:
+:
+:
+:
+:
+
+PAIEMENT: id, montant, méthode, statut  
+RESERVE, 0N UTILISATEUR, 14 RESERVATION  
+SE_DEROULE_SUR, 11 RESERVATION, 0N COURT  
+LIE_A, 11 COURT, 1N METEO  
+METEO: id, condition, vent  
+:
+:
+
+PAYER_UTILISATEUR, 0N UTILISATEUR, 11 PAIEMENT  
+UTILISATEUR: id, nom, email, mot_de_passe, role  
+POSSEDE, 0N UTILISATEUR, 11 COURT  
+COURT: id, nom, indoor, num_courts, lumières, tarif_base, tarif_meteo  
+DISPOSE_DE, 1N CLUB, 11 COURT  
+:
+:
+
+:
+LAISSE, 0N UTILISATEUR, 11 AVIS  
+AVIS: id, note, commentaire  
+PORTE_SUR,  11 AVIS, 0N CLUB
+CLUB: id, nom, téléphone, email, site_web  
+EST_LOCALISE, 11 CLUB, 11 LOCALISATION  
+LOCALISATION: id, nom, adresse, ville, code_postal, latitude, longitude

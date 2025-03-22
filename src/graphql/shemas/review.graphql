@@ -1,0 +1,17 @@
+
+type Weather {
+    id: ID!
+    condition: String!
+    wind: String!
+    createdAt: String!
+    updatedAt: String 
+
+}
+
+# CREATE TABLE weather (
+#     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+#     condition VARCHAR(255) NOT NULL,
+#     wind VARCHAR(255) NOT NULL,
+#     created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+#     updated_at TIMESTAMP
+# );
