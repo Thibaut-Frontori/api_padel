@@ -3,16 +3,11 @@ import cors from "cors";
 import { ApolloServer } from "@apollo/server";
 import { expressMiddleware } from "@apollo/server/express4";
 import {typeDefs} from './graphql/shemas/typeDef.js'; 
+import resolvers from '@resolvers/index.js'; 
+import BaseMapper from '@mappers/baseMapper';
 
 const port = process.env.PORT || 4001;
 
-
-// Définition des résolveurs
-const resolvers = {
-  Query: {
-    hello: () => "Hello, world!",
-  },
-};
 
 // Création du serveur Apollo
 const server = new ApolloServer({

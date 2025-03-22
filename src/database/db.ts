@@ -1,8 +1,8 @@
-import { Pool } from "pg";
+import pg from "pg";
 import dotenv from "dotenv";
 import debug from "debug";
 
-dotenv.config();
+const { Pool } = pg;
 
 // Création d'un espace de log dédié à la BDD
 const dbDebug = debug("app:db");

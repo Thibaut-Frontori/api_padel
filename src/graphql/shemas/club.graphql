@@ -10,6 +10,10 @@ type Club {
     updated_at: String
 }
 
+type Query {
+  getClubs: [Club]
+}
+
 # -- Club table
 # CREATE TABLE club (
 #     id BIGINT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
